@@ -88,7 +88,12 @@ fi
 
 # Link .zshrc
 echo "🔗 Linking .zshrc from dotfiles..."
-ln -sf "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
+if [[ ! -f "$HOME/.zshrc" ]]; then
+  ln -s "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
+  echo "🔗 Linked .zshrc."
+else
+  echo "🔗 .zshrc already linked."
+fi
 
 # Final Steps
 echo "🎉 Bootstrap completed. Restart your terminal or run 'source ~/.zshrc' to apply changes."
