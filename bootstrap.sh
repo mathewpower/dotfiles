@@ -4,6 +4,12 @@ set -e
 
 echo "🚀 Starting bootstrap script for development environment setup."
 
+# Default to ZSH
+if [[ $SHELL != "/bin/zsh" ]]; then
+  echo "⚙️ Changing default shell to Zsh..."
+  chsh -s $(which zsh)
+fi
+
 # Determine the absolute path to the dotfiles directory
 DOTFILES_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
